@@ -1,0 +1,63 @@
+PPT
+
+\documentclass{beamer}
+\usetheme{Madrid}
+
+\title{Linux and LaTeX Basics}
+\author{Pranjal Pankaj Padwal}
+\institute{B.Tech AI and ML\\JSPM University, Pune}
+\date{2 April 2026}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Contents}\tableofcontents\end{frame}
+
+\section{Introduction to Linux}
+\begin{frame}{Introduction to Linux}
+\begin{itemize}
+\item Linux is an open-source operating system
+\item It supports multi-user environment
+\item Widely used in servers and development
+\end{itemize}
+\end{frame}
+
+\section{Features of Linux}
+\begin{frame}{Features of Linux}
+\begin{itemize}
+\item High security
+\item Customization
+\item Stability and performance
+\end{itemize}
+\end{frame}
+
+\section{LaTeX}
+\begin{frame}{Importance of LaTeX}
+\begin{itemize}
+\item Used for professional documentation
+\item Helps create structured reports
+\item Widely used in academics
+\end{itemize}
+\end{frame}
+
+\section{Comparison}
+\begin{frame}{Linux vs Windows}
+\begin{tabular}{|c|c|c|}\hline
+Feature & Linux & Windows\\\hline
+Open Source & Yes & No\\
+Security & High & Moderate\\
+Customization & High & Limited\\\hline
+\end{tabular}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item Linux is powerful and flexible
+\item LaTeX helps create professional documents
+\item Both are important for computer science students
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Thank You}\centering\Huge Thank You\end{frame}
+\end{document}
