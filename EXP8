@@ -1,0 +1,40 @@
+data analysis and visualization in python
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn import datasets
+
+# Load the dataset
+iris = datasets.load_iris()
+data = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+data['species'] = iris.target
+
+# Map species to names
+data['species'] = data['species'].map({0: 'setosa', 1: 'versicolor', 2: 'virginica'})
+
+# Display first 10 rows
+print(data.head(10))
+
+# Check for missing values
+print(data.isnull().sum())
+
+# Summary statistics
+print(data.describe())
+
+# Correlation heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(data.iloc[:, :-1].corr(), annot=True, cmap='coolwarm', fmt='.2f')
+plt.title("Feature Correlation Heatmap")
+plt.show()
+
+# Bar Chart - Class Distribution
+sns.countplot(x='species', data=data)
+plt.title("Class Distribution of Iris Dataset")
+plt.xlabel("Species")
+plt.ylabel("Count")
+plt.show()
+
+# Pair Plot
+sns.pairplot(data, hue='species')
+plt.show()
