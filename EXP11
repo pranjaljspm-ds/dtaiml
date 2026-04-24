@@ -1,0 +1,69 @@
+data visualization and interactive dashboards
+
+# Step 0: Install Dash and its components
+!pip install dash dash-core-components dash-html-components --quiet
+
+# Step 1: Load Dataset
+import pandas as pd
+
+df = pd.read_csv("housing.csv")
+print(df.head())
+
+
+# Step 2: Seaborn Advanced Plots
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Violin Plot
+sns.violinplot(x=df["median_house_value"])
+plt.show()
+
+# Box Plot (median_house_value vs Neighborhood)
+sns.boxplot(x="ocean_proximity", y="median_house_value", data=df)
+plt.xticks(rotation=90)
+plt.show()
+
+
+# Step 3: Plotly Interactive Plots
+import plotly.express as px
+
+# Scatter Plot
+fig = px.scatter(df, x="total_rooms", y="median_house_value", color="ocean_proximity")
+fig.show()
+
+# Histogram
+fig = px.histogram(df, x="median_house_value", nbins=50)
+fig.show()
+
+
+# Step 4: Dash Dashboard
+from dash import Dash, dcc, html, Input, Output
+
+app = Dash(name)
+
+app.layout = html.Div([
+    dcc.Dropdown(
+        id='feature-dropdown',
+        options=[
+            {'label': 'total_rooms', 'value': 'total_rooms'},
+            {'label': 'total_bedrooms', 'value': 'total_bedrooms'},
+            {'label': 'population', 'value': 'population'},
+            {'label': 'households', 'value': 'households'},
+            {'label': 'median_income', 'value': 'median_income'},
+            {'label': 'housing_median_age', 'value': 'housing_median_age'}
+        ],
+        value='total_rooms'
+    ),
+    dcc.Graph(id='graph')
+])
+
+@app.callback(
+    Output('graph', 'figure'),
+    Input('feature-dropdown', 'value')
+)
+def update_graph(selected_feature):
+    fig = px.scatter(df, x=selected_feature, y="median_house_value")
+    return fig
+
+if name == 'main':
+    app.run(debug=True)
